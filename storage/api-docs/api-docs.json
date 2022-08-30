@@ -1,0 +1,273 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Salary",
+        "description": "Demo Salary",
+        "version": "1.0"
+    },
+    "paths": {
+        "/api/employee/store": {
+            "post": {
+                "tags": [
+                    "Employee"
+                ],
+                "summary": "Create Employee",
+                "operationId": "95a119bd9d0023e90ac8feb22bf59575",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "": {
+                                        "properties": {
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "salary": {
+                                                "type": "number"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "name": "Tono",
+                                    "salary": 6000000
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "name": {
+                                            "type": "string",
+                                            "example": "tono"
+                                        },
+                                        "salary": {
+                                            "type": "number",
+                                            "example": 500000
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "invalid",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "msg": {
+                                            "type": "string",
+                                            "example": "fail"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/overtime/store": {
+            "post": {
+                "tags": [
+                    "Overtime"
+                ],
+                "summary": "Create Overtime",
+                "operationId": "95a119bd9d0023e90ac8feb22bf59575",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "": {
+                                        "properties": {
+                                            "employee_id": {
+                                                "type": "number"
+                                            },
+                                            "date": {
+                                                "type": "string"
+                                            },
+                                            "time_started": {
+                                                "type": "string"
+                                            },
+                                            "time_ended": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "employee_id": 1,
+                                    "date": "2022-08-16",
+                                    "time_started": "08:00",
+                                    "time_ended": "17:00"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "employee_id": {
+                                            "type": "number",
+                                            "example": 1
+                                        },
+                                        "date": {
+                                            "type": "string",
+                                            "example": "2022-08-16"
+                                        },
+                                        "time_started": {
+                                            "type": "string",
+                                            "example": "08:00"
+                                        },
+                                        "time_ended": {
+                                            "type": "string",
+                                            "example": "17:00"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "invalid",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "msg": {
+                                            "type": "string",
+                                            "example": "fail"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/setting/update": {
+            "post": {
+                "tags": [
+                    "Setting"
+                ],
+                "summary": "Update Setting",
+                "operationId": "8c88a825db408e19ccecf67263a61ec8",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "": {
+                                        "properties": {
+                                            "key": {
+                                                "type": "string"
+                                            },
+                                            "value": {
+                                                "type": "number"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "key": "overtime_method",
+                                    "value": 2
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "key": {
+                                            "type": "string",
+                                            "example": "overtime_method"
+                                        },
+                                        "value": {
+                                            "type": "number",
+                                            "example": 2
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/overtime-pays/calculate/{month}": {
+            "get": {
+                "tags": [
+                    "Overtime"
+                ],
+                "summary": "Calculate Overtime Pay",
+                "operationId": "79780d7a6536643763e964e20fb983ab",
+                "parameters": [
+                    {
+                        "name": "month",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "number",
+                                            "example": 1
+                                        },
+                                        "title": {
+                                            "type": "string",
+                                            "example": "title"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "security": [
+        []
+    ]
+}
